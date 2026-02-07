@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 
-function Login() {
+function Login( {onLogin} ) {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
 
@@ -9,7 +9,7 @@ function Login() {
     e.preventDefault();
 
     if (user === "admin" && password === "1234") {
-      alert("Acceso correcto");
+      onLogin();
     } else {
       alert("Datos incorrectos");
     }
