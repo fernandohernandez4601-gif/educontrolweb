@@ -78,3 +78,22 @@ tr:nth-child(even) {
 .logout-btn:hover {
   background-color: #a62828;
 }
+
+td button {
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+td button:hover {
+  background-color: #2e7d32;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-top: 5px;
+}
