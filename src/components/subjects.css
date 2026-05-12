@@ -1,4 +1,4 @@
-.students-container {
+.subjects-container {
   width: 600px;
   margin: 40px auto;
   padding: 20px;
@@ -10,7 +10,7 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.students-container h2 {
+.subjects-container h2 {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -41,24 +41,24 @@
   background-color: #125aa0;
 }
 
-table {
+.subjects-container table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th,
-td {
+.subjects-container th,
+.subjects-container td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
 }
 
-th {
+.subjects-container th {
   background-color: #1976d2;
   color: white;
 }
 
-tr:nth-child(even) {
+.subjects-container tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
@@ -85,7 +85,7 @@ tr:nth-child(even) {
   margin-top: 5px;
 }
 
-.students-container td button {
+.subjects-container td button {
   color: white;
   border: none;
   border-radius: 4px;
@@ -97,11 +97,11 @@ tr:nth-child(even) {
 }
 
 /* Botón editar */
-.students-container td button:first-child {
+.subjects-container td button:first-child {
   background-color: #388e3c;
 }
 
-.students-container td button:first-child:hover {
+.subjects-container td button:first-child:hover {
   background-color: #2e7d32;
 }
 
@@ -112,4 +112,15 @@ tr:nth-child(even) {
 
 .delete-btn:hover {
   background-color: #a62828 !important;
+}
+
+@media (max-width: 768px) {
+  .subjects-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .form {
+    flex-direction: column;
+  }
 }

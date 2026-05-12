@@ -1,46 +1,46 @@
 import React, { useState, useEffect } from "react";
-import "./students.css";
+import "./subjects.css";
 
-function Students( {onLogout}) {
+function Subjects( {onLogout}) {
 const [name, setName] = useState("");
 const [editingIndex, setEditingIndex] = useState(null);
 const [error, setError] = useState("");
 const [list, setList] = useState(() => {
-  const storedStudents = localStorage.getItem("students");
+  const storedSubjects = localStorage.getItem("subjects");
 
-  if (storedStudents) {
-    return JSON.parse(storedStudents);
+  if (storedSubjects) {
+    return JSON.parse(storedSubjects);
   } else {
-    const demoStudents = [];
+    const demoSubjects = [];
     for (let i = 1; i <= 20; i++) {
-      demoStudents.push(`Alumno ${i}`);
+      demoSubjects.push(`Materia ${i}`);
     }
-    return demoStudents;
+    return demoSubjects;
   }
 });
 
   useEffect(() => {
-  localStorage.setItem("students", JSON.stringify(list));
+  localStorage.setItem("subjects", JSON.stringify(list));
   }, [list]);
 
-  const addStudent = () => {
+  const addSubject = () => {
   const trimmedName = name.trim();
 
   // Validar vacío
   if (trimmedName === "") {
-    setError("El nombre del alumno es obligatorio.");
+    setError("El nombre de la materia es obligatorio.");
     return;
   }
 
   // Validar duplicado (ignorando mayúsculas)
   const duplicate = list.some(
-    (student, index) =>
-      student.toLowerCase() === trimmedName.toLowerCase() &&
+    (subject, index) =>
+      subject.toLowerCase() === trimmedName.toLowerCase() &&
       index !== editingIndex
   );
 
   if (duplicate) {
-    setError("El alumno ya está registrado.");
+    setError("La materia ya está registrada.");
     return;
   }
 
@@ -59,8 +59,8 @@ const [list, setList] = useState(() => {
 };
 
   return (
-    <div className="students-container">
-      <h2>Registro de Alumnos</h2>
+    <div className="subjects-container">
+      <h2>Registro de Materias</h2>
 
         <button className="logout-btn" onClick={onLogout}>
         Cerrar sesión
@@ -70,12 +70,12 @@ const [list, setList] = useState(() => {
       <div className="form">
         <input
           type="text"
-          placeholder="Nombre del alumno"
+          placeholder="Nombre de la materia"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
 
-        <button onClick={addStudent}>
+        <button onClick={addSubject}>
           {editingIndex !== null ? "Actualizar" : "Agregar"}
         </button>
 
@@ -86,20 +86,20 @@ const [list, setList] = useState(() => {
         <thead>
           <tr>
             <th>#</th>
-            <th>Nombre</th>
+            <th>Nombre de materia</th>
             <th>Acciones</th>
           </tr>
         </thead>
 
         <tbody>
-          {list.map((student, index) => (
+          {list.map((subject, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
-              <td>{student}</td>
+              <td>{subject}</td>
               <td>
                 <button
                   onClick={() => {
-                    setName(student);
+                    setName(subject);
                     setEditingIndex(index);
                   }}
                 >
@@ -110,7 +110,7 @@ const [list, setList] = useState(() => {
                   className="delete-btn"
                   onClick={() => {
                     const confirmDelete = window.confirm(
-                      "¿Deseas eliminar este alumno?"
+                      "¿Deseas eliminar esta materia?"
                     );
 
                     if (confirmDelete) {
@@ -130,4 +130,4 @@ const [list, setList] = useState(() => {
   );
 }
 
-export default Students;
+export default Subjects;
